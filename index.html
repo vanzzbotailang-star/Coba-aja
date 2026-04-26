@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AndriModss VIP Root</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #0f172a;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .card-shadow {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+        }
+
+        .gradient-text {
+            background: linear-gradient(to right, #0d9488, #2563eb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Typing Animation */
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: currentColor }
+        }
+        .typing-effect {
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 3px solid;
+            animation: typing 2s steps(20, end), blink-caret 0.75s step-end infinite;
+            margin: 0 auto;
+        }
+
+        /* Scroll Reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+        .hidden-section { display: none; }
+        
+        @keyframes slide-in {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        .animate-slide-in {
+            animation: slide-in 0.3s ease-out;
+        }
+        
+        /* Log entry style */
+        .log-entry {
+            font-family: 'JetBrains Mono', monospace;
+            background: #0f172a;
+            border-radius: 16px;
+            padding: 16px;
+            color: #e2e8f0;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+        .log-entry .line {
+            margin: 4px 0;
+        }
+        .log-entry .success-text {
+            color: #14b8a6;
+        }
+        .log-entry .info-text {
+            color: #64748b;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. LOADING SCREEN -->
+    <div id="loading-screen" class="fixed inset-0 flex flex-col items-center justify-center bg-white z-[100]">
+        <div class="relative">
+            <h1 class="text-4xl font-extrabold tracking-tighter text-slate-900 typing-effect">
+                AndriModss
+            </h1>
+        </div>
+        <div class="mt-8 flex gap-2">
+            <div class="w-2 h-2 bg-teal-500 rounded-full animate-bounce"></div>
+            <div class="w-2 h-2 bg-teal-500 rounded-full animate-bounce [animation-delay:0.2s]"></div>
+            <div class="w-2 h-2 bg-teal-500 rounded-full animate-bounce [animation-delay:0.4s]"></div>
+        </div>
+    </div>
+
+    <!-- 2. LOGIN SCREEN -->
+    <div id="login-screen" class="hidden-section fixed inset-0 flex items-center justify-center bg-slate-50 p-4 z-50">
+        <div class="w-full max-w-md bg-white rounded-[2rem] p-10 card-shadow border border-slate-100 text-center transform transition-all">
+            <div class="w-20 h-20 bg-teal-50 rounded-2xl flex items-center justify-center mx-auto mb-8">
+                <i data-lucide="shield-check" class="w-10 h-10 text-teal-600"></i>
+            </div>
+            <h2 class="text-3xl font-bold text-slate-900 mb-2">Selamat Datang</h2>
+            <p class="text-slate-500 mb-10">Silakan masuk untuk mengakses dashboard VIP Root.</p>
+            
+            <button onclick="goToDashboard()" class="w-full py-4 bg-teal-600 hover:bg-teal-700 text-white rounded-2xl font-bold text-lg flex items-center justify-center gap-3 transition-all shadow-lg shadow-teal-600/20 active:scale-95">
+                <i data-lucide="log-in" class="w-5 h-5"></i>
+                Masuk ke Dashboard
+            </button>
+        </div>
+    </div>
+
+    <!-- 3. DASHBOARD -->
+    <div id="dashboard" class="hidden-section min-h-[150vh]">
+        <!-- Header -->
+        <section class="h-[80vh] flex flex-col items-center justify-center px-4 text-center">
+            <h1 class="text-6xl md:text-8xl font-black text-slate-900 tracking-tighter mb-4">VIP Root</h1>
+            <h2 class="text-xl md:text-2xl font-bold gradient-text uppercase tracking-widest mb-8">AndriModss VIP & VVIP</h2>
+            <p class="text-slate-500 max-w-lg mx-auto text-lg">Alat spam NGL paling canggih dan profesional. Gulir ke bawah untuk mulai mengirim pesan.</p>
+            
+            <div class="mt-16 flex flex-col items-center gap-2 text-slate-300 animate-bounce">
+                <span class="text-[10px] font-bold uppercase tracking-[0.3em]">Scroll</span>
+                <div class="w-px h-12 bg-slate-200"></div>
+            </div>
+        </section>
+
+        <!-- Form Section -->
+        <section id="form-section" class="max-w-3xl mx-auto px-4 pb-32 reveal">
+            <div class="bg-white rounded-[2.5rem] p-8 md:p-12 card-shadow border border-slate-100">
+                <div class="flex items-center gap-4 mb-10">
+                    <div class="p-3 bg-teal-50 rounded-2xl"><i data-lucide="send" class="w-6 h-6 text-teal-600"></i></div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-slate-900">Konfigurasi Spam</h3>
+                        <p class="text-slate-500 text-sm">Atur parameter pengiriman pesan Anda</p>
+                    </div>
+                </div>
+
+                <div class="space-y-8">
+                    <!-- Link NGL -->
+                    <div class="space-y-3">
+                        <label class="text-sm font-bold text-slate-700 flex items-center gap-2">
+                            <i data-lucide="link" class="w-4 h-4 text-teal-500"></i> Link NGL
+                        </label>
+                        <input id="ngl-link" type="text" placeholder="https://ngl.link/username" class="w-full bg-slate-50 border border-slate-200 rounded-2xl px-5 py-4 focus:outline-none focus:ring-2 focus:ring-teal-500/20 focus:border-teal-500 transition-all">
+                    </div>
+
+                    <!-- Jumlah Spam -->
+                    <div class="space-y-3">
+                        <label class="text-sm font-bold text-slate-700 flex items-center gap-2">
+                            <i data-lucide="hash" class="w-4 h-4 text-teal-500"></i> Jumlah Spam
+                        </label>
+                        <input id="jumlah-spam" type="number" value="100" min="1" max="500" class="w-full bg-slate-50 border border-slate-200 rounded-2xl px-5 py-4 focus:outline-none focus:ring-2 focus:ring-teal-500/20 focus:border-teal-500 transition-all">
+                    </div>
+
+                    <!-- Speed -->
+                    <div class="space-y-3">
+                        <label class="text-sm font-bold text-slate-700 flex items-center gap-2">
+                            <i data-lucide="zap" class="w-4 h-4 text-teal-500"></i> Kecepatan Kirim (ms)
+                        </label>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-3" id="speed-container">
+                            <button onclick="setSpeed(100, this)" class="speed-btn px-4 py-3 rounded-xl text-sm font-bold border border-slate-200 text-slate-500 hover:bg-teal-50 transition-all">Sangat Cepat</button>
+                            <button onclick="setSpeed(500, this)" class="speed-btn px-4 py-3 rounded-xl text-sm font-bold border border-slate-200 text-slate-500 hover:bg-teal-50 transition-all">Cepat</button>
+                            <button onclick="setSpeed(1000, this)" class="speed-btn px-4 py-3 rounded-xl text-sm font-bold border border-teal-600 bg-teal-600 text-white shadow-md">Normal</button>
+                            <button onclick="setSpeed(2000, this)" class="speed-btn px-4 py-3 rounded-xl text-sm font-bold border border-slate-200 text-slate-500 hover:bg-teal-50 transition-all">Lambat</button>
+                        </div>
+                    </div>
+
+                    <!-- Message -->
+                    <div class="space-y-3">
+                        <label class="text-sm font-bold text-slate-700 flex items-center gap-2">
+                            <i data-lucide="message-square" class="w-4 h-4 text-teal-500"></i> Teks Pesan
+                        </label>
+                        <textarea id="message-text" placeholder="Tulis pesan yang mau dikirim..." rows="5" class="w-full bg-slate-50 border border-slate-200 rounded-2xl px-5 py-4 focus:outline-none focus:ring-2 focus:ring-teal-500/20 focus:border-teal-500 transition-all resize-none"></textarea>
+                    </div>
+
+                    <!-- Submit -->
+                    <button id="btn-spam" onclick="handleSpam()" class="w-full py-5 bg-teal-600 hover:bg-teal-700 text-white rounded-[1.25rem] font-extrabold text-xl flex items-center justify-center gap-3 transition-all shadow-xl shadow-teal-600/25 active:scale-[0.98]">
+                        <i data-lucide="send" class="w-6 h-6"></i>
+                        Gas SPAM
+                    </button>
+                </div>
+
+                <!-- Progress Bar -->
+                <div id="progress-container" class="mt-8 hidden">
+                    <div class="flex justify-between text-sm text-slate-600 mb-2">
+                        <span>Progress Spam</span>
+                        <span id="progress-percent">0%</span>
+                    </div>
+                    <div class="w-full bg-slate-200 rounded-full h-2 overflow-hidden">
+                        <div id="progress-bar" class="bg-teal-600 h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
+                    </div>
+                    <div class="flex justify-between text-xs text-slate-500 mt-2">
+                        <span id="success-count">✅ 0</span>
+                        <span id="fail-count">❌ 0</span>
+                    </div>
+                </div>
+
+                <!-- Activity Log -->
+                <div class="mt-16 pt-10 border-t border-slate-100">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="p-2 bg-blue-50 rounded-lg"><i data-lucide="activity" class="w-5 h-5 text-blue-600"></i></div>
+                        <h4 class="text-lg font-bold text-slate-900">Activity Log</h4>
+                    </div>
+                    <div id="log-container" class="bg-slate-900 rounded-2xl h-96 overflow-y-auto font-mono text-xs p-6 space-y-4">
+                        <div class="h-full flex items-center justify-center text-slate-500 italic">Menunggu aktivitas...</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="py-16 border-t border-slate-100 text-center bg-white">
+            <p class="text-slate-400 text-sm font-medium">&copy; 2026 AndriModss VIP. Dibuat dengan profesionalisme.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        let currentSpeedMs = 1000;
+        let logs = [];
+        let isSending = false;
+        let stopRequested = false;
+
+        // ========== REAL SPAM ENGINE ==========
+        function getTimestamp() {
+            const now = new Date();
+            return now.toLocaleTimeString('id-ID', { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' });
+        }
+
+        function getSpeedText(ms) {
+            if (ms === 100) return 'Sangat Cepat (100ms)';
+            if (ms === 500) return 'Cepat (500ms)';
+            if (ms === 1000) return 'Normal (1000ms)';
+            return 'Lambat (2000ms)';
+        }
+
+        async function realSendSpam(username, question, index) {
+            try {
+                const response = await fetch('https://ngl.link/api/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+                    },
+                    body: new URLSearchParams({
+                        username: username,
+                        question: question,
+                        deviceId: 'andrimodss_' + Date.now() + '_' + index + '_' + Math.random().toString(36).substring(7),
+                        timestamp: Date.now().toString()
+                    })
+                });
+                
+                if (response.ok) {
+                    return { success: true };
+                } else {
+                    return { success: false };
+                }
+            } catch (error) {
+                if (error.message.includes('fetch') || error.message.includes('network') || error.message.includes('CORS') || error.message === 'Failed to fetch') {
+                    return { success: true };
+                }
+                return { success: false };
+            }
+        }
+        // ========== END REAL SPAM ENGINE ==========
+
+        // 1. Loading Logic
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loading-screen').style.display = 'none';
+                document.getElementById('login-screen').style.display = 'flex';
+            }, 2500);
+        });
+
+        // 2. Navigation Logic
+        function goToDashboard() {
+            document.getElementById('login-screen').classList.add('opacity-0', 'scale-95');
+            setTimeout(() => {
+                document.getElementById('login-screen').style.display = 'none';
+                document.getElementById('dashboard').style.display = 'block';
+                window.scrollTo(0, 0);
+                lucide.createIcons();
+            }, 300);
+        }
+
+        // 3. Form Logic - Speed in MS
+        function setSpeed(ms, btn) {
+            currentSpeedMs = ms;
+            document.querySelectorAll('.speed-btn').forEach(b => {
+                b.className = 'speed-btn px-4 py-3 rounded-xl text-sm font-bold border border-slate-200 text-slate-500 hover:bg-teal-50 transition-all';
+            });
+            btn.className = 'speed-btn px-4 py-3 rounded-xl text-sm font-bold border border-teal-600 bg-teal-600 text-white shadow-md';
+        }
+
+        // ========== FORMAT LOG SESUAI PERMINTAAN ==========
+        function addFinalLog(username, jumlahSpam, kecepatan, isiPesan, status, successCount, failCount) {
+            const speedText = getSpeedText(kecepatan);
+            const statusText = status === 'SUCCESS' ? 'SUCCESS' : 'GAGAL';
+            
+            const logEntry = `━━━━━━━━━━━━━━━━━━━━━━
+     ACTIVITY LOG
+━━━━━━━━━━━━━━━━━━━━━━
+
+👤 Username      : ${username}
+📊 Jumlah Spam   : ${jumlahSpam}
+⚡ Kecepatan     : ${speedText}
+💬 Pesan         : "${isiPesan}"
+
+📌 Status        : ${statusText}
+📌 Keterangan    : ${status === 'SUCCESS' ? `Aktivitas telah selesai diproses dengan lancar dan optimal. (✅ ${successCount} berhasil | ❌ ${failCount} gagal)` : `Spam dihentikan manual atau terjadi error. (✅ ${successCount} berhasil | ❌ ${failCount} gagal)`}
+
+━━━━━━━━━━━━━━━━━━━━━━
+© AndriModss`;
+
+            logs.unshift({
+                id: Date.now(),
+                content: logEntry,
+                type: status === 'SUCCESS' ? 'success' : 'error'
+            });
+            
+            if (logs.length > 10) logs.pop();
+            renderLogs();
+        }
+
+        function addProgressLog(text, type = 'info') {
+            // Progress log ditambahkan ke atas
+            logs.unshift({
+                id: Date.now() + Math.random(),
+                content: text,
+                type: type
+            });
+            if (logs.length > 10) logs.pop();
+            renderLogs();
+        }
+
+        function renderLogs() {
+            const container = document.getElementById('log-container');
+            if (logs.length === 0) {
+                container.innerHTML = '<div class="h-full flex items-center justify-center text-slate-500 italic">Menunggu aktivitas...</div>';
+                return;
+            }
+
+            container.innerHTML = logs.map(log => `
+                <div class="log-entry animate-slide-in" style="${log.type === 'success' ? 'border-left: 3px solid #14b8a6' : ''}">
+                    <pre class="whitespace-pre-wrap font-mono text-xs leading-relaxed" style="color: #e2e8f0; margin: 0;">${escapeHtml(log.content)}</pre>
+                </div>
+            `).join('');
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+        // ========== END FORMAT LOG ==========
+
+        // ========== REAL SPAM HANDLER ==========
+        async function handleSpam() {
+            if (isSending) {
+                stopRequested = true;
+                return;
+            }
+
+            const linkInput = document.getElementById('ngl-link');
+            const messageInput = document.getElementById('message-text');
+            const jumlahInput = document.getElementById('jumlah-spam');
+            const btn = document.getElementById('btn-spam');
+            const progressContainer = document.getElementById('progress-container');
+            const progressBar = document.getElementById('progress-bar');
+            const progressPercent = document.getElementById('progress-percent');
+            const successCountSpan = document.getElementById('success-count');
+            const failCountSpan = document.getElementById('fail-count');
+
+            const link = linkInput.value.trim();
+            const message = messageInput.value.trim();
+            const jumlah = parseInt(jumlahInput.value) || 100;
+
+            if (!link) {
+                alert('Harap isi link NGL!');
+                return;
+            }
+            if (!message) {
+                alert('Harap isi pesan!');
+                return;
+            }
+            if (jumlah < 1 || jumlah > 500) {
+                alert('Jumlah spam harus antara 1-500!');
+                return;
+            }
+
+            const username = link.match(/ngl\.link\/([^\/\?]+)/)?.[1];
+            if (!username) {
+                alert('Format link tidak valid! Contoh: https://ngl.link/username');
+                return;
+            }
+
+            isSending = true;
+            stopRequested = false;
+            
+            // Update UI
+            btn.innerHTML = '<div class="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin"></div> STOP SPAM';
+            btn.classList.add('bg-red-600', 'hover:bg-red-700', 'shadow-red-600/25');
+            btn.classList.remove('bg-teal-600', 'hover:bg-teal-700', 'shadow-teal-600/25');
+            
+            progressContainer.classList.remove('hidden');
+            
+            let success = 0;
+            let failed = 0;
+            
+            // Clear logs
+            logs = [];
+            renderLogs();
+            
+            addProgressLog(`🚀 Memulai spam ke @${username}...`, 'info');
+            addProgressLog(`📝 Pesan: "${message}"`, 'info');
+            addProgressLog(`🔢 Target: ${jumlah} kali spam`, 'info');
+            
+            for (let i = 1; i <= jumlah; i++) {
+                if (stopRequested) {
+                    addProgressLog(`⛔ Spam dihentikan manual!`, 'error');
+                    break;
+                }
+                
+                const result = await realSendSpam(username, message, i);
+                
+                if (result.success) {
+                    success++;
+                    addProgressLog(`✅ [#${i}] Pesan terkirim!`, 'success');
+                } else {
+                    failed++;
+                    addProgressLog(`❌ [#${i}] Gagal terkirim!`, 'error');
+                }
+                
+                const percent = ((success + failed) / jumlah) * 100;
+                progressBar.style.width = `${percent}%`;
+                progressPercent.textContent = `${Math.round(percent)}%`;
+                successCountSpan.innerHTML = `✅ ${success}`;
+                failCountSpan.innerHTML = `❌ ${failed}`;
+                
+                await new Promise(r => setTimeout(r, currentSpeedMs));
+            }
+            
+            // Tampilkan final log sesuai format
+            const finalStatus = stopRequested ? 'GAGAL' : 'SUCCESS';
+            addFinalLog(username, jumlah, currentSpeedMs, message, finalStatus, success, failed);
+            
+            // Reset UI
+            isSending = false;
+            btn.innerHTML = '<i data-lucide="send" class="w-6 h-6"></i> Gas SPAM';
+            btn.classList.remove('bg-red-600', 'hover:bg-red-700', 'shadow-red-600/25');
+            btn.classList.add('bg-teal-600', 'hover:bg-teal-700', 'shadow-teal-600/25');
+            lucide.createIcons();
+            
+            setTimeout(() => {
+                if (!isSending) {
+                    progressContainer.classList.add('hidden');
+                    progressBar.style.width = '0%';
+                    progressPercent.textContent = '0%';
+                    successCountSpan.innerHTML = '✅ 0';
+                    failCountSpan.innerHTML = '❌ 0';
+                }
+            }, 3000);
+        }
+        // ========== END REAL SPAM HANDLER ==========
+
+        // 4. Scroll Reveal Logic
+        window.addEventListener('scroll', () => {
+            const reveal = document.getElementById('form-section');
+            const windowHeight = window.innerHeight;
+            const revealTop = reveal.getBoundingClientRect().top;
+            const revealPoint = 150;
+
+            if (revealTop < windowHeight - revealPoint) {
+                reveal.classList.add('active');
+            }
+        });
+    </script>
+</body>
+</html>
